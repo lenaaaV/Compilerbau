@@ -505,4 +505,94 @@ Eine kontextfreie Grammatik besteht aus
     \caption{Beispiel}
     \label{fig:enter-label}
 \end{figure}
+
+\subsection{Syntaxbäume}
+Ein \hl{Syntaxbaum} ist ein geordneter, markierter Baum bei dem
+\begin{itemize}
+    \item die Blätter mit \textbf{Terminalsymbolen} markiert sind
+    \item die inneren Knoten mit \textbf{Nicht-Terminalsymbolen} markiert sind
+    \item jeder innere Knoten $N$ (von links nach rechts) die Kinder $X_1,...,X_n$ hat, entsprechend der Produktion $N := X_1,...,X_n$
+    \begin{itemize}
+        \item $N$ ist ein Nicht-Terminalsymbol, welches durch die Symbole $X_1,...,X_n$ ersetzt werden kann
+    \end{itemize}
+\end{itemize}
+Ein \hl{N-Baum} ist ein Baum mit einem \textbf{N Nicht-Terminalsymbol am Wurzelknoten}.
+\newpage
+\noindent\textbf{\hl{Expression-Baum für $d + 10 * n$}}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{/Users/lenavo/Desktop/3.Semester/Compilerbau/img/expr.png}
+    \caption{Syntaxbaum}
+    \label{fig:enter-label}
+\end{figure}
+
+\noindent\textbf{\hl{single-Command-Baum}}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{/Users/lenavo/Desktop/3.Semester/Compilerbau/img/single c.png}
+    \caption{Syntaxbaum}
+    \label{fig:enter-label}
+\end{figure}
+
+\subsection{Konkrete und abstrakte Syntax}
+\textbf{Konkrete Syntax}
+\begin{itemize}
+    \item beschreibt die \hl{genaue, textuelle Form} eines Programms
+    \item legt fest, wie Programme geschrieben werden müssen, um von einem Compiler oder Interpreter als korrekt erkannt zu werden
+    \item konkrete Syntax hat \hl{keinen Einfluss} auf \hl{Semantik} der Programme
+\end{itemize}
+
+\noindent\textbf{Abstrakte Syntax}
+\begin{itemize}
+    \item ist eine vereinfachte Darstellung der Struktur eines Programms
+    \item entfernt unnötige syntaktische Details und konzentriert sich auf die \hl{wesentlichen semantischen Strukturen} eines Programms
+    \item Idee: Orientierung an der Subphrasen-Struktur der Produktionen
+    \item Schlüsselworte wie \hl{do, :=} sind irrelevant
+    \item Unterscheidungen zwischen
+    \begin{itemize}
+        \item \hl{Command} und \hl{Single-Command}
+        \item \hl{Declaration} und \hl{Single-Declaration}
+        \item \hl{Expression} und \hl{primary-Expression}
+    \end{itemize}
+    \item ...sind nur für das Erkennen des Programms relevant, nicht zur Darstellunng seiner Semantik
+\end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{/Users/lenavo/Desktop/3.Semester/Compilerbau/img/abs.png}
+    \caption{Auszug aus der abstrakten Syntax}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{/Users/lenavo/Desktop/3.Semester/Compilerbau/img/abs s.png}
+    \caption{Beispiel abstrakte Syntax}
+    \label{fig:enter-label}
+\end{figure}
+
+\subsection{AST als Zwischendarstellung}
+\begin{itemize}
+    \item ein \textbf{abstrakter Syntaxbaum} ist eine weit verbreitete Form der Zwischendarstellung (IR)
+    \item \textbf{höhere Abstraktionsebene}, high-level IR
+    \item sehr nah an der Eingabesprache
+    \item gut geeignet für \hl{weitreichende Analysen und Transformationen}
+    \begin{itemize}
+        \item unabhängig von Architektur der Zielmaschine
+        \item Verschieben von Anweisungen
+        \item Änderungen der Programmstruktur
+    \end{itemize}
+
+    \item schlechter geeignet für \hl{maschinennahe Analyse und Transformationen}
+    \begin{itemize}
+        \item Ausnutzung von Maschinenregistern
+        \item Ausnutzung von speziellen Maschinenbefehlsfolgen
+    \end{itemize}
+    \item Hier Konzentration auf \hl{maschinenunabhängige} Ebene
+    \begin{itemize}
+        \item (D)AST ist Hauptrepräsentation
+        \item für einzelne Bearbeitungsschritte: Andere IRs
+    \end{itemize}
+\end{itemize}
+
+
 \end{document}  
